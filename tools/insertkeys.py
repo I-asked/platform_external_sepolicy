@@ -2,7 +2,7 @@
 
 from xml.sax import saxutils, handler, make_parser
 from optparse import OptionParser
-import ConfigParser
+import configparser
 import logging
 import base64
 import sys
@@ -107,7 +107,7 @@ class GenerateKeys(object):
     def getBase64Keys(self):
         return self._base64Key
 
-class ParseConfig(ConfigParser.ConfigParser):
+class ParseConfig(configparser.ConfigParser):
 
     # This must be lowercase
     OPTION_WILDCARD_TAG = "all"
@@ -177,7 +177,7 @@ class ReplaceTags(handler.ContentHandler):
 
         self._out.write('<' + tag)
 
-        for (name, value) in attrs.items():
+        for (name, value) in list(attrs.items()):
 
             if name == ReplaceTags.SIGNATURE_TAG and value in self._keyMap:
                 for key in self._keyMap[value].getBase16Keys():
