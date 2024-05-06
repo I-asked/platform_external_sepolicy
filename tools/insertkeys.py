@@ -32,7 +32,7 @@ class GenerateKeys(object):
         if not os.path.isfile(path):
             sys.exit("Path " + path + " does not exist or is not a file!")
 
-        pkFile = open(path, 'rb').readlines()
+        pkFile = open(path, 'r').readlines()
         base64Key = ""
         lineNo = 1
         certNo = 1
