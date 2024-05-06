@@ -181,7 +181,7 @@ class ReplaceTags(handler.ContentHandler):
 
             if name == ReplaceTags.SIGNATURE_TAG and value in self._keyMap:
                 for key in self._keyMap[value].getBase16Keys():
-                    logging.info("Replacing " + name + " " + value + " with " + key)
+                    logging.info("Replacing " + name + " " + value + " with " + key.decode())
                     self._out.write(' %s="%s"' % (name, saxutils.escape(key)))
             else:
                 self._out.write(' %s="%s"' % (name, saxutils.escape(value)))
